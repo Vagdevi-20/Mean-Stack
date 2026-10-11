@@ -1,0 +1,35 @@
+<div class="expense-form">
+  <h2>Add Expense</h2>
+  <form (ngSubmit)="onSubmit()" #expenseForm="ngForm">
+    <div class="form-group">
+      <label for="amount">Amount</label>
+      <input id="amount" type="number" [(ngModel)]="expense.amount" name="amount" required />
+    </div>
+
+    <div class="form-group">
+      <label for="date">Date</label>
+      <input id="date" type="date" [(ngModel)]="expense.date" name="date" required />
+    </div>
+
+    <div class="form-group">
+      <label for="category">Category</label>
+      <select id="category" [(ngModel)]="expense.category" name="category" required>
+        <option value="" disabled>Select Category</option>
+        <option value="Food">Food</option>
+        <option value="Travel">Travel</option>
+        <option value="Books">Books</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+
+    <div class="form-group" *ngIf="expense.category === 'Other'">
+      <label for="otherCategory">Other Category</label>
+      <input id="otherCategory" [(ngModel)]="expense.otherCategory" name="otherCategory" placeholder="Enter category" required />
+    </div>
+
+    <button type="submit" [disabled]="saving">{{ saving ? 'Saving...' : 'Save Expense' }}</button>
+  </form>
+
+  <p class="success-message" *ngIf="successMessage">{{ successMessage }}</p>
+  <p class="error-message" *ngIf="errorMessage">{{ errorMessage }}</p>
+</div>

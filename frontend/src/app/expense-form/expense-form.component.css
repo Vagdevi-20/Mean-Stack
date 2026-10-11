@@ -1,0 +1,39 @@
+.card {
+  background: #7bd1d1;
+  border: 1px solid #e4e7ec;
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+h1 {
+  color: #101828;
+  font-size: 1.25rem;
+  margin-top: 0;
+}
+
+form {
+  display: grid;
+  gap: 0.75rem;
+}
+
+label {
+  color: #344054;
+  font-weight: 600;
+}
+
+input,
+button {
+  border: 1px solid #6dbcc2;
+  border-radius: 7px;
+  font: inherit;
+  padding: 0.7rem;
+}
+
+button {
+  background: #509db4;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: 0.5rem;
+}

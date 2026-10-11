@@ -1,0 +1,66 @@
+<div class="dashboard-container">
+  <aside class="sidebar">
+    <a class="profile" routerLink="/profile" aria-label="Open profile">
+      <span class="avatar" aria-hidden="true">{{ user.fullname.charAt(0) || 'U' }}</span>
+      <h3>{{ user.fullname }}</h3>
+      <p>{{ user.email }}</p>
+      <span class="profile-link">View profile</span>
+    </a>
+
+    <nav class="nav-menu" aria-label="Dashboard navigation">
+      <a routerLink="/dashboard" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="active">Overview</a>
+      <a routerLink="/dashboard/add-expense" routerLinkActive="active">Add expense</a>
+      <a routerLink="/dashboard/expenses" routerLinkActive="active">Transactions</a>
+      <a routerLink="/dashboard/suggestions" routerLinkActive="active">Suggestions</a>
+      <a routerLink="/logout" class="logout">Logout</a>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="topbar">
+      <div>
+        <h1>Expense Dashboard</h1>
+        <p>See where your money is going.</p>
+      </div>
+      <div class="date-filter" aria-label="Filter expenses by date">
+        <label>From <input type="date" [(ngModel)]="startDate"></label>
+        <label>To <input type="date" [(ngModel)]="endDate"></label>
+        <button type="button" (click)="applyFilter()">Apply</button>
+        <button type="button" class="secondary-button" (click)="clearFilter()">Clear</button>
+      </div>
+    </header>
+
+    <p class="error-message" *ngIf="errorMessage" role="alert">{{ errorMessage }}</p>
+
+    <section class="summary-cards" aria-label="Expense summary">
+      <article class="card expense">
+        <h2>Total expenses</h2>
+        <p>{{ totalExpense | currency:'INR':'symbol':'1.2-2' }}</p>
+      </article>
+      <article class="card transactions">
+        <h2>Transactions</h2>
+        <p>{{ transactionCount }}</p>
+      </article>
+      <article class="card category">
+        <h2>Top category</h2>
+        <p>{{ topCategory }}</p>
+      </article>
+    </section>
+
+    <section class="charts">
+      <article class="chart-container">
+        <h2>Spending by category</h2>
+        <div class="chart-area">
+          <canvas #expenseCanvas aria-label="Pie chart of expenses by category"></canvas>
+        </div>
+        <p class="empty-state" *ngIf="!transactionCount">Add an expense to see your category breakdown.</p>
+      </article>
+    </section>
+
+    <router-outlet></router-outlet>
+  </main>
+</div>
+<div class="suggestion-card" *ngIf="suggestion">
+  <h3>Smart Suggestion</h3>
+  <p>{{ suggestion }}</p>
+</div>

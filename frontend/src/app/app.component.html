@@ -1,0 +1,56 @@
+<!-- import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  template: `
+    <router-outlet></router-outlet>
+  `
+})
+export class AppComponent {} -->
+<div class="dashboard">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="brand">
+      <i class="fas fa-wallet"></i>
+      <span>ExpenseVerse</span>
+    </div>
+
+    <nav class="nav-menu">
+      <a routerLink="/profile"><i class="fas fa-user"></i> Profile</a>
+      <a routerLink="/add-expense"><i class="fas fa-plus-circle"></i> Add Expense</a>
+      <a routerLink="/expense-list"><i class="fas fa-list"></i> Expense List</a>
+      <a routerLink="/analysis"><i class="fas fa-chart-line"></i> Analysis</a>
+      <a routerLink="/suggestions"><i class="fas fa-lightbulb"></i> Suggestions</a>
+      <a routerLink="/logout" class="logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="content">
+    <header class="topbar">
+      <h2>Welcome back, {{username}}</h2>
+      <div class="user-info">
+        <i class="fas fa-bell"></i>
+        <i class="fas fa-cog"></i>
+      </div>
+    </header>
+
+    <section class="cards">
+      <div class="card">
+        <h3>Total Expenses</h3>
+        <p>₹ 12,450</p>
+      </div>
+      <div class="card">
+        <h3>Monthly Budget</h3>
+        <p>₹ 20,000</p>
+      </div>
+      <div class="card">
+        <h3>Suggestions</h3>
+        <p>Cut down on dining out 🍴</p>
+      </div>
+    </section>
+
+    <router-outlet></router-outlet>
+  </main>
+</div>
